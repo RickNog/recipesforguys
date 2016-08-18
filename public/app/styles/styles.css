@@ -1,0 +1,137 @@
+/*Begin navbar*/
+.dropdown-submenu>.dropdown-menu {
+   top:0;left:100%;
+   margin-top:-6px;margin-left:-1px;
+   -webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;
+ }
+  
+.dropdown-submenu > a:after {
+  border-color: transparent transparent transparent #333;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  content: " ";
+  display: block;
+  float: right;  
+  height: 0;     
+  margin-right: -10px;
+  margin-top: 5px;
+  width: 0;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav  {
+     display: inline;
+  }
+  .navbar-default .navbar-brand {
+    display: inline;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  .navbar-default .navbar-nav .dropdown-menu > li > a {
+    color: red;
+    background-color: #ccc;
+    border-radius: 4px;
+    margin-top: 2px;   
+  }
+   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+     color: #333;
+   }
+   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+     background-color: #ccc;
+   }
+
+   .navbar-nav .open .dropdown-menu {
+     border-bottom: 1px solid white; 
+     border-radius: 0;
+   }
+  .dropdown-menu {
+      padding-left: 10px;
+  }
+  .dropdown-menu .dropdown-menu {
+      padding-left: 20px;
+   }
+   .dropdown-menu .dropdown-menu .dropdown-menu {
+      padding-left: 30px;
+   }
+   li.dropdown.open {
+    border: 0px solid red;
+   }
+
+}
+@media (min-width: 768px) {
+  ul.nav li:hover > ul.dropdown-menu {
+    display: block;
+  }
+  #navbar {
+    text-align: center;
+  }
+}
+/*End of Navbar*/
+
+
+/*Begin carousel*/
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+#myCarousel .item {height: 400px;}
+
+
+/*End of carousel*/
+
+img {
+  max-width: 100%;
+}
+
+/*Register dialog*/
+body{
+    
+background: #FFB75E; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #FFB75E , #ED8F03); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #FFB75E , #ED8F03); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+margin: auto;           
+}
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+#title {
+  text-align: center;
+  font-size: 40px;
+  font-family: serif;
+}
+
+/*******************************************
+PAGE: TOOLS
+*******************************************/
+#wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+#tools {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#tools li{
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+
+.formfield * {
+    vertical-align: top;
+}
+
+
