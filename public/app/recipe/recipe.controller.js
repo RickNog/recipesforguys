@@ -13,17 +13,17 @@
         vm.addRecipe = addRecipe;
         vm.deleteRecipe = deleteRecipe;
         vm.editRecipe = editRecipe;
-        // vm.searchRecipe = searchRecipe,
-        vm.username = localStorageService.get("username")
+        vm.searchRecipe = searchRecipe;
+        vm.username = localStorageService.get("username");
 
 
         activate();
         ////////////////
         function activate() {
             //Searches recipes by users if user is logged in
-            if (vm.username) {
-                searchRecipeByUser(vm.username);
-        }
+        //     if (vm.username) {
+        //         searchRecipeByUser(vm.username);
+        // }
         //Performs advanced search with search terms passed into search parameters
             // searchRecipe();
     }
@@ -48,9 +48,9 @@
         }
 
         //Creating function to call RecipesFactory's addRecipes method to add property
-        function addRecipe() {
+        function addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy) {
 
-            RecipeFactory.addRecipe()
+            RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
                 .then(function(response) {
 
                         vm.recipe.push(response.data);
@@ -109,25 +109,25 @@
         }
 
         //Creating function to call R's searchrecipies method to advanced search
-        // function searchRecipe() {
+        function searchRecipe() {
 
-        //     var searchQuery = {  };
+            var searchQuery = {  };
 
-        //     RecipeFactory.searchRecipe(searchQuery)
-        //         .then(function(response) {
+            RecipeFactory.searchRecipe(searchQuery)
+                .then(function(response) {
 
-        //                 vm.searchResults = (response.data);
-        //                 toastr.success('Recipe Loaded!');
+                        vm.searchResults = (response.data);
+                        toastr.success('Recipe Loaded!');
 
 
-        //             },
-        //             function(error) {
-        //                 if (typeof error === 'object') {
-        //                     toastr.error('There was an error: ' + error.data);
-        //                 } else {
-        //                     toastr.info(error);
-        //                 }
-        //             })
-        // }
+                    },
+                    function(error) {
+                        if (typeof error === 'object') {
+                            toastr.error('There was an error: ' + error.data);
+                        } else {
+                            toastr.info(error);
+                        }
+                    })
+        }
     }
 })();

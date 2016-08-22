@@ -14,10 +14,10 @@
         vm.registerUser = registerUser;
         vm.loginUser = loginUser;
         vm.logoutUser = logoutUser;
-         vm.username = localStorageService.get("username");
+        vm.loginEmail = localStorageService.get("loginEmail");
 
         //Checks to see if there is a stored username, if yes sets login status to true
-        if (vm.username) {
+        if (vm.loginEmail) {
             vm.userLoggedIn = true;
         }
 
@@ -26,8 +26,8 @@
         function activate() {
         }
 
-        function registerUser(email, password, confirmPassword, firstName, lastName){
-        	AuthFactory.registerUser(email, password, confirmPassword, firstName, lastName)
+        function registerUser(firstName, lastName, email, password, confirmPassword){
+        	AuthFactory.registerUser(firstName, lastName, email, password, confirmPassword)
         	.then(function(response){
 
                 toastr.success('User successfully registered!');
@@ -52,7 +52,7 @@
         //Creating function to call login user from AuthFactory and store login status
         function loginUser(loginEmail, loginPassword) {
             logoutUser();
-            AuthFactory.loginUser(vm.loginEmail, vm.loginPassword)
+            AuthFactory.loginUser(loginEmail, loginPassword)
             .then(function(response) {
                     vm.userLoggedIn = true;
                     vm.loginData = response.data;

@@ -44,11 +44,11 @@
         }
 
         //Uses POST HTTP call to add a new recipe into the database
-        function addRecipe(calories, fat, protein, carbs, fiber, sugar, servings, timePrep, timeCook) {
+        function addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy) {
 
             var defer = $q.defer();
 
-            var newProperty = { calories: calories, fat: fat, protein: protein, carbs: carbs, fiber: fiber, sugar: sugar, servings: servings, timePrep: timePrep, timeCook: timeCook };
+            var newRecipe = { category: category, recipeName: recipeName, recipeDetails: recipeDetails, timePrep: timePrep, timeCook: timeCook, servings: servings, calories: calories, fat: fat, protein: protein, carbs: carbs, fiber: fiber, createdDate: createdDate, createdBy: createdBy };
 
             $http({
                 method: 'POST',
@@ -56,7 +56,7 @@
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 },
-                data: newProperty
+                data: newRecipe
             }).then(function(response) {
                     if (typeof response.data === 'object') {
                         defer.resolve(response);

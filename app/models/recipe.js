@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('Recipe', new Schema({
+var UserSchema = new mongoose.Schema({
 	category: {type: String},
 	recipeName: {type: String},
 	recipeDetails: {type: String},
@@ -17,5 +17,10 @@ module.exports = mongoose.model('Recipe', new Schema({
  	createdDate: {type: Date},
  	createdBy: {type: String},
  	public: {type: Boolean, default:true}
-}));
+});
 
+
+
+
+var User = mongoose.model('Recipe', UserSchema)
+module.exports = User;

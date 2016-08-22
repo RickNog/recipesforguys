@@ -21,10 +21,6 @@ mongoose.connect(config.database); // connect to database
 app.set('superSecret', config.secret); // secret variable
 
 
-// use body parser so we can get info from POST and/or URL parameters
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
@@ -42,21 +38,22 @@ app.use(bodyParser.json());
 
 // Route to authenticate a user
 router.post('/authenticate', function(req, res) {
-
+console.log(req.body);
   // find the user
   User.findOne({
     email: req.body.email
+
   }, function(err, user) {
 
     if (err) throw err;
 
     if (!user) {
-      res.json({ success: false, message: 'Authentication failed. User not found.' });
+      res.status(401).send({ success: false, message: 'User not found.' });
     } else if (user) {
 
       // check if password matches
       if (user.password != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        res.status(401).send({ success: false, message: 'Password incorrect.' });
       } else {
 
         // if user is found and password is right

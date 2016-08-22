@@ -2,7 +2,7 @@
     <!-- <form role="form"> -->
         <div class="formfield">
             <label for="comment">Paste or type recipe here:</label>
-            <textarea rows="10" cols="70" id="comment"></textarea>
+            <textarea rows="10" cols="70" id="comment" ng-model="vm.recipeDetails"></textarea>
         </div>
     <!-- </form> -->
 </div>
@@ -33,15 +33,15 @@
     <form class="form-inline">
         <div class="row">
             <div class="form-group">
-                <label class="control-label col-sm-3">Calories</label>
+                <label class="control-label col-sm-3">Recipe Name</label>
                 <div class="col-md-2">
-                    <input type="" class="form-control" ng-model="vm.calories" placeholder="Optional">
+                    <input type="" class="form-control" ng-model="vm.recipeName" placeholder="Optional">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-3">Fat</label>
+                <label class="control-label col-sm-3">Calories</label>
                 <div class="col-md-2">
-                    <input type="" class="form-control" ng-model="vm.fat" placeholder="Optional">
+                    <input type="" class="form-control" ng-model="vm.calories" placeholder="Optional">
                 </div>
             </div>
             <div class="form-group">
@@ -56,6 +56,12 @@
     <form class="form-inline">
         <div class="row">
             <div class="form-group">
+                <label class="control-label col-sm-3">Fat</label>
+                <div class="col-md-2">
+                    <input type="" class="form-control" ng-model="vm.fat" placeholder="Optional">
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-sm-3">Carbs</label>
                 <div class="col-md-2">
                     <input type="" class="form-control" ng-model="vm.carbs" placeholder="Optional">
@@ -67,12 +73,6 @@
                     <input type="" class="form-control" ng-model="vm.fiber" placeholder="Optional">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-3">Sugar</label>
-                <div class="col-md-2">
-                    <input type="" class="form-control" ng-model="vm.sugar" placeholder="Optional">
-                </div>
-            </div>
         </div>
     </form>
     <form class="form-inline">
@@ -80,13 +80,13 @@
             <div class="form-group">
                 <label class="control-label col-sm-3">Time prep</label>
                 <div class="col-md-2">
-                    <input type="" class="form-control" ng-model="vm.timeprep" placeholder="Optional">
+                    <input type="" class="form-control" ng-model="vm.timePrep" placeholder="Optional">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-3">Time cook</label>
                 <div class="col-md-2">
-                    <input type="" class="form-control" ng-model="vm.timecook" placeholder="Optional">
+                    <input type="" class="form-control" ng-model="vm.timeCook" placeholder="Optional">
                 </div>
             </div>
             <div class="form-group">
@@ -103,25 +103,25 @@
     <div class="col-md-6">
         <div class="prioritySelectInput">
             <label for="prioritySelect">Select catagory (required):</label>
-            <select class="form-control" ng-model="todoPriority">
-                <option class="lowPri" value="lowPri">Chicken</option>
-                <option class="mediumPri" value="mediumPri">Beef</option>
-                <option class="highPri" value="highPri">Pork</option>
-                <option class="highPri" value="highPri">Seafood</option>
-                <option class="highPri" value="highPri">Carbs</option>
-                <option class="highPri" value="highPri">Burgers</option>
-                <option class="highPri" value="highPri">Veggies</option>
-                <option class="highPri" value="highPri">Breakfast</option>
-                <option class="highPri" value="highPri">Cooking with beer</option>
-                <option class="highPri" value="highPri">The bar</option>
-                <option class="highPri" value="highPri">Plates for dates</option>
+            <select class="form-control" ng-model="vm.category">
+                <option>Chicken</option>
+                <option>Beef</option>
+                <option>Pork</option>
+                <option>Seafood</option>
+                <option>Carbs</option>
+                <option>Burgers</option>
+                <option>Veggies</option>
+                <option>Breakfast</option>
+                <option>Cooking with beer</option>
+                <option>The bar</option>
+                <option>Plates for dates</option>
             </select>
         </div>
     </div>
 </div>
 <br>
 <div class="container">
-    <button class="btn btn-primary" ng-click=" ">Add Recipe</button>
+    <button class="btn btn-primary" ng-click="vm.addRecipe(vm.category, vm.recipeName, vm.recipeDetails, vm.timePrep, vm.timeCook, vm.servings, vm.calories, vm.fat, vm.protein, vm.carbs, vm.fiber)">Add Recipe</button>
 </div>
 <br>
 

@@ -15,7 +15,7 @@
         return service;
         ////////////////
         //Checks user confirm password and then uses POST HTTP call to register user in database
-        function registerUser(useremail, password, confirmPassword, firstName, lastName) {
+        function registerUser(firstName, lastName, email, password, confirmPassword) {
 
             var defer = $q.defer();
 
@@ -25,11 +25,11 @@
                 return defer.promise;
             }
 
-            var newUser = {emailAddress: useremail, password: password, confirmPassword: confirmPassword, firstName: firstName, lastName: lastName};
+            var newUser = {firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword};
 
             $http({
                     method: 'POST',
-                    url: apiUrl + 'accounts/register',
+                    url: apiUrl + 'register',
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     },
@@ -52,16 +52,10 @@
         function loginUser(loginEmail, loginPassword){
             var defer = $q.defer();
 
-            var data = "grant_type=password&username=" + loginEmail + "&password=" + loginPassword;
+            var loginData = {email: loginEmail, password: loginPassword}
 
-            $http({
-                    method: 'POST',
-                    url: apiUrl + 'authenticate',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: data
-                }).then(function(response) {
+            $http.post(apiUrl + 'authenticate',{email: loginEmail, password: loginPassword})
+                    .then(function(response) {
                         if (response.status === 200) {
 
                             //Stores access token and username on successful login

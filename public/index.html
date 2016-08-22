@@ -84,14 +84,14 @@
                                         <form class="form" role="form" id="login-nav">
                                             <div class="form-group">
                                                 <label class="sr-only" for="Email">Email address</label>
-                                                <input ng-model="vm.username" type="email" class="form-control" id="Email" placeholder="Email address">
+                                                <input ng-model="vm.loginEmail" type="email" class="form-control" id="Email" placeholder="Email address">
                                             </div>
                                             <div class="form-group">
                                                 <label class="sr-only" for="Password">Password</label>
-                                                <input ng-model="vm.password" type="password" class="form-control" id="Password" placeholder="Password">
+                                                <input ng-model="vm.loginPassword" type="password" class="form-control" id="Password" placeholder="Password">
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-primary btn-block" ng-click="vm.loginUser(vm.username, vm.password )">Sign in</button>
+                                                <button class="btn btn-primary btn-block" ng-click="vm.loginUser(vm.loginEmail, vm.loginPassword)">Sign in</button>
                                             </div>
                                         </form>
                                     </div>
