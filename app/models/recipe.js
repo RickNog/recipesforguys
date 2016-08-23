@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserSchema = new mongoose.Schema({
+var RecipeSchema = new mongoose.Schema({
 	category: {type: String},
 	recipeName: {type: String},
 	recipeDetails: {type: String},
@@ -22,5 +22,5 @@ var UserSchema = new mongoose.Schema({
 
 
 
-var User = mongoose.model('Recipe', UserSchema)
-module.exports = User;
+var Recipe = mongoose.model('Recipe', RecipeSchema)
+module.exports = Recipe;

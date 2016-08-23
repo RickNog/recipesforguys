@@ -82,6 +82,8 @@ router.post('/recipes', function(req, res) {
 
     var recipe = new Recipe(req.body);
     console.log(recipe);
+    console.log("hey");
+    console.log(req.body);
     Recipe.create(recipe, function(err, recipe){
       if (err) {
         return res.status(500).json({ err: err.message});
