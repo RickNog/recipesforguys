@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 
 // Route to authenticate a user
 router.post('/authenticate', function(req, res) {
-console.log(req.body);
+
   // find the user
   User.findOne({
     email: req.body.email

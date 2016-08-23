@@ -20,11 +20,14 @@
         activate();
         ////////////////
         function activate() {
+
+            //getRecipe();
             //Searches recipes by users if user is logged in
         //     if (vm.username) {
         //         searchRecipeByUser(vm.username);
         // }
         //Performs advanced search with search terms passed into search parameters
+
             // searchRecipe();
     }
 
@@ -53,7 +56,7 @@
             RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
                 .then(function(response) {
 
-                        vm.recipe.push(response.data);
+                        vm.recipes.push(response.data);
                         toastr.success('Recipe Loaded!');
 
 
@@ -69,7 +72,7 @@
 
         //Creating function to call RecipesFactory's delete property method to delete recipies
         function deleteRecipe(data) {
-            var index = vm.recipe.indexOf(data);
+            var index = vm.recipes.indexOf(data);
             RecipeFactory.deleteRecipe(data.RecipeId).then(function(response) {
 
                     vm.recipeDel = response.data;
@@ -85,7 +88,7 @@
                     }
                 });
 
-            return vm.recipe.splice(index, 1);
+            return vm.recipes.splice(index, 1);
 
         }
 
@@ -109,9 +112,9 @@
         }
 
         //Creating function to call R's searchrecipies method to advanced search
-        function searchRecipe() {
+        function searchRecipe(chicken, beef) {
 
-            var searchQuery = {  };
+            var searchQuery = { category: category };
 
             RecipeFactory.searchRecipe(searchQuery)
                 .then(function(response) {

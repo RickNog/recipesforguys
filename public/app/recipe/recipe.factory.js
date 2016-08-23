@@ -7,7 +7,7 @@
     
     /* @ngInject */
     function RecipeFactory($http, $q, localStorageService, apiUrl) {
-        var url = apiUrl + 'recipes/'
+        
 
         var service = {
             getRecipe: getRecipe,
@@ -26,7 +26,7 @@
 
             $http({
                 method: 'GET',
-                url: url + 'recipes'
+                url: apiUrl + 'recipes',
             }).then(function(response) {
                     if (typeof response.data === 'object') {
                         defer.resolve(response);
@@ -52,7 +52,7 @@
 
             $http({
                 method: 'POST',
-                url: url + 'recipes',
+                url: apiUrl + 'recipes',
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 },
@@ -79,7 +79,7 @@
 
             $http({
                 method: 'DELETE',
-                url: url + recipeId,
+                url: apiUrl + recipeId,
             }).then(function(response) {
                     if (typeof response.data === 'object') {
                         defer.resolve(response);
@@ -102,7 +102,7 @@
 
             $http({
                 method: 'PUT',
-                url: url + data.recipeId,
+                url: apiUrl + data.recipeId,
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 },
