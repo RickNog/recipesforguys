@@ -111,8 +111,8 @@
                     })
         }
 
-        //Creating function to call R's searchrecipies method to advanced search
-        function searchRecipe(chicken, beef) {
+        // Function to call searchrecipe method to advanced search
+        function searchRecipe(category) {
 
             var searchQuery = { category: category };
 

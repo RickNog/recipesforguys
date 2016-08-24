@@ -122,30 +122,30 @@
 
         }
 
-        //Uses POST HTTP call to send searchQuery object to database and returns results 
+        //Uses GET HTTP call to send searchQuery object to database and returns results 
         //of advanced search
-        // function searchRecipe(searchQuery) {
-        //     var defer = $q.defer();
+        function searchRecipe(searchQuery) {
+            var defer = $q.defer();
 
-        //     $http({
-        //         method: 'POST',
-        //         url: url + 'search',
-        //         headers: {
-        //             'Content-Type': 'application/json; charset=utf-8'
-        //         },
-        //         data: searchQuery
-        //     }).then(function(response) {
-        //             if (typeof response.data === 'object') {
-        //                 defer.resolve(response);
-        //             } else {
-        //                 defer.reject("No data found!");
-        //             }
-        //         },
-        //         function(error) {
-        //             defer.reject(error);
-        //         });
+            $http({
+                method: 'GET',
+                url: apiUrl + 'recipes/search?category=' + searchQuery.category,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+                
+            }).then(function(response) {
+                    if (typeof response.data === 'object') {
+                        defer.resolve(response);
+                    } else {
+                        defer.reject("No data found!");
+                    }
+                },
+                function(error) {
+                    defer.reject(error);
+                });
 
-        //     return defer.promise;
-        // }
+            return defer.promise;
+        }
     }
 })();

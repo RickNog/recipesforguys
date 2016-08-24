@@ -63,8 +63,9 @@ router.post('/register', function(req, res, next) {
 // ***************************
 
 // GET recipe
-router.get('/recipes', function(req, res) {
-    var query = req.query;
+router.get('/recipes/search', function(req, res) {
+    var query = {};
+
     if (req.query.category) {
         query.category = req.query.category;
     }
@@ -81,9 +82,7 @@ router.get('/recipes', function(req, res) {
 router.post('/recipes', function(req, res) {
 
     var recipe = new Recipe(req.body);
-    console.log(recipe);
-    console.log("hey");
-    console.log(req.body);
+
     Recipe.create(recipe, function(err, recipe){
       if (err) {
         return res.status(500).json({ err: err.message});
