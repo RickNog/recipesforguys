@@ -14,7 +14,9 @@
         vm.deleteRecipe = deleteRecipe;
         vm.editRecipe = editRecipe;
         vm.searchRecipe = searchRecipe;
-        vm.username = localStorageService.get("username");
+        vm.loginEmail = localStorageService.get("loginEmail");
+
+        vm.category = $stateParams.category
 
 
         activate();
@@ -22,13 +24,9 @@
         function activate() {
 
             getRecipe();
-            //Searches recipes by users if user is logged in
-        //     if (vm.username) {
-        //         searchRecipeByUser(vm.username);
-        // }
-        //Performs advanced search with search terms passed into search parameters
 
-            // searchRecipe();
+            //searchRecipe({category: 'Chicken'});
+           
     }
 
     //Creating function to call RecipesFactory's getRecipes method to get and store all recipies
