@@ -2,8 +2,8 @@
     <div class="formfield">
         <label for="comment">Paste or type recipe here:</label>
         <br/>
-        <!-- <trix-editor angular-trix ng-model="vm.recipeDetails" class="trix-content"></trix-editor> -->
-        <textarea rows="10" cols="70" id="comment" ng-model="vm.recipeDetails"></textarea>
+        <trix-editor angular-trix ng-model="vm.recipeDetails" class="trix-content"></trix-editor>
+        <!-- <textarea rows="10" cols="70" id="comment" ng-model="vm.recipeDetails"></textarea> -->
     </div>
 </div>
 <br/>
@@ -14,8 +14,7 @@
             <input type="file" class="filestyle" data-buttonText="Select a File">
         </div>
     </div>
-    <fieldset class="form-group">
-        <!-- <legend>Radio buttons</legend> -->
+    <!-- <fieldset class="form-group">
         <div class="radio">
             <b>Want the other guys to view your recipe?</b>
             <br>
@@ -28,12 +27,13 @@
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Nah, maybe later.
             </label>
         </div>
-    </fieldset>
+    </fieldset> -->
 </div>
+<br/>
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label class="control-label col-sm-3"></label> <!-- Recipe Name -->
+            <label class="control-label col-sm-3">Recipe Name</label> 
             <div class="col-md-8">
                 <input type="" class="form-control" ng-model="vm.recipeName" placeholder="Optional">
             </div>
@@ -87,7 +87,7 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label class="control-label col-sm-3"></label>  <!-- Time cook -->
+            <label class="control-label col-sm-3">Time cook</label>  
             <div class="col-md-8">
                 <input type="" class="form-control" ng-model="vm.timeCook" placeholder="Optional">
             </div>

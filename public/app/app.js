@@ -2,7 +2,7 @@
     'use strict';
 
     // define the top-level app container
-    var app = angular.module('app', ['ui.router', 'LocalStorageModule']);
+    var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'angularTrix']);
 
     app.config(function(localStorageServiceProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
 
