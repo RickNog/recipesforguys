@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app='app'>
 
 <head>
@@ -51,7 +51,7 @@
                             <li class="dropdown dropdown-submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Protein</a>
                                 <ul class="dropdown-menu">
-                                    <li><a ng-href="#" ng-click="vm.searchRecipe('Chicken')">Chicken</a></li>
+                                    <li><a ui-sref="reciperesults({category: 'Chicken'})">Chicken</a></li>
                                     <li><a href="#">Beef</a></li>
                                     <li><a href="#">Pork</a></li>
                                     <li><a href="#">Seafood</a></li>
@@ -73,7 +73,6 @@
                         </ul>
                     </li>
                     <li ng-show="vm.userLoggedIn"><a ui-sref="myrecipes" href="#">MY RECIPES</a></li>
-                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

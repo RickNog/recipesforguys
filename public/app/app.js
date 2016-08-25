@@ -18,6 +18,14 @@
             controller: 'RecipeController',
             controllerAs: 'vm'
         })
+            // CALLS RECIPE PAGE TO VIEW RESULTS
+            .state('reciperesults', {
+            url: '/reciperesults/:category',
+            templateUrl: '../partials/partial-reciperesults.html',
+            controller: 'RecipeController',
+            controllerAs: 'vm'
+            // params: {category: category}
+        })
             // CALLS REGISTRATION PAGE
             .state('register', {
             url: '/register',

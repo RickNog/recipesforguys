@@ -63,6 +63,17 @@ router.post('/register', function(req, res, next) {
 // ***************************
 
 // GET recipe
+router.get('/recipes', function(req, res) {
+
+    Recipe.find(function(err, recipes) {
+        if (err)
+            res.status(500).send(err);
+        else
+            res.json(recipes);
+    });
+});
+
+// SEARCH recipe
 router.get('/recipes/search', function(req, res) {
     var query = {};
 

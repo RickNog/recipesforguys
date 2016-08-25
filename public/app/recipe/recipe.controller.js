@@ -21,7 +21,7 @@
         ////////////////
         function activate() {
 
-            //getRecipe();
+            getRecipe();
             //Searches recipes by users if user is logged in
         //     if (vm.username) {
         //         searchRecipeByUser(vm.username);
@@ -37,8 +37,8 @@
             RecipeFactory.getRecipe()
                 .then(function(response) {
 
-                        vm.recipes = response.data;
-                        toastr.success('Recipe Loaded!');
+                        vm.searchResults = response.data;
+                        //toastr.success("Success");
 
                     },
                     function(error) {
@@ -56,7 +56,7 @@
             RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
                 .then(function(response) {
 
-                        vm.recipes.push(response.data);
+                        vm.recipe.push(response.data);
                         toastr.success('Recipe Loaded!');
 
 
@@ -72,7 +72,7 @@
 
         //Creating function to call RecipesFactory's delete property method to delete recipies
         function deleteRecipe(data) {
-            var index = vm.recipes.indexOf(data);
+            var index = vm.recipe.indexOf(data);
             RecipeFactory.deleteRecipe(data.RecipeId).then(function(response) {
 
                     vm.recipeDel = response.data;
@@ -88,7 +88,7 @@
                     }
                 });
 
-            return vm.recipes.splice(index, 1);
+            return vm.recipe.splice(index, 1);
 
         }
 

@@ -27,6 +27,7 @@
             $http({
                 method: 'GET',
                 url: apiUrl + 'recipes',
+                //data: category
             }).then(function(response) {
                     if (typeof response.data === 'object') {
                         defer.resolve(response);
@@ -130,6 +131,7 @@
             $http({
                 method: 'GET',
                 url: apiUrl + 'recipes/search?category=' + searchQuery.category,
+                // data: category,
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
