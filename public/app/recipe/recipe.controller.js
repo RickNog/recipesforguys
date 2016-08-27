@@ -7,6 +7,7 @@
     
     /* @ngInject */
     function RecipeController(RecipeFactory, $stateParams, localStorageService) {
+
         var vm = this;
         vm.title = 'RecipeController';
         vm.getRecipe = getRecipe;
@@ -16,14 +17,14 @@
         vm.searchRecipe = searchRecipe;
         vm.loginEmail = localStorageService.get("loginEmail");
 
-        vm.category = $stateParams.category
+        vm.searchCategory = $stateParams.category
 
 
         activate();
         ////////////////
         function activate() {
 
-            getRecipe();
+            searchRecipe(vm.searchCategory);
 
             //searchRecipe({category: 'Chicken'});
            
@@ -54,7 +55,8 @@
             RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
                 .then(function(response) {
 
-                        vm.recipe.push(response.data);
+                        response;
+                        //vm.recipe.push(.data);
                         toastr.success('Recipe Loaded!');
 
 

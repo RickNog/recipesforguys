@@ -120,10 +120,12 @@
 </div>
 <br>
 <div class="container">
+<div class="row">
     <div class="col-md-6">
         <div class="prioritySelectInput">
+        <div class="form-group">
             <label for="prioritySelect">Select catagory (required):</label>
-            <select class="form-control" ng-model="vm.category">
+            <select class="required" ng-model="vm.category">
                 <option>Chicken</option>
                 <option>Beef</option>
                 <option>Pork</option>
@@ -134,14 +136,17 @@
                 <option>Breakfast</option>
                 <option>Cooking with beer</option>
                 <option>The bar</option>
-                <option>Plates for dates</option>
+                <option>Plates for dates (dinner)</option>
+                <option>Plates for dates (breakfast)</option>
             </select>
         </div>
+        </div>
+    </div>
     </div>
 </div>
 <br>
 <div class="container">
-    <button class="btn btn-primary" ng-click="vm.addRecipe(vm.category, vm.recipeName, vm.recipeDetails, vm.timePrep, vm.timeCook, vm.servings, vm.calories, vm.fat, vm.protein, vm.carbs, vm.fiber)">Add Recipe</button>
+    <summit class="btn btn-primary" ng-click="vm.addRecipe(vm.category, vm.recipeName, vm.recipeDetails, vm.timePrep, vm.timeCook, vm.servings, vm.calories, vm.fat, vm.protein, vm.carbs, vm.fiber)">Add Recipe</summit>
 </div>
 <br>
 <!-- Main dashboard body for displaying user's added properties -->
@@ -151,34 +156,9 @@
             <div class="row">
                 <div class="panel panel-default NewPanel searchResult">
                     <div class="panel-body recipeDisplay">
-                        <img ng-src="../img/{{data.recipeId}}.jpg" class="recipePic">
-                        <br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Description: {{data.Description}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Description" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Street: {{data.Street}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Street" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">City: {{data.City}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.City" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Zip: {{data.Zip}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Zip" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Rent: ${{data.Rent}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Rent" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Square Feet: {{data.Squareft}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Squareft" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Bedrooms: {{data.Bedrooms}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Bedrooms" class="editing-label" type="text" />
-                        </br>
-                        <label ng-hide="editing" ng-show="propertyName === 'name'" ng-click="editing = !editing">Bathrooms: {{data.Bathrooms}}</label>
-                        <input ng-blur="editing = false;" ng-show="editing" ng-model="data.Bathrooms" class="editing-label" type="text" />
-                        </br>
-                        <button class="btn btn-primary" ng-click="vm.editProperty(data); editing = false">Save Changes</button>
-                        <button class="btn btn-danger" ng-click="vm.deleteProperty(data)">delete property</button>
+                        
+
+                        
                     </div>
                 </div>
             </div>
