@@ -202,13 +202,15 @@ PAGE: INDEX
   font-size: 23px;
 }
 
+
+
+/*******************************************
+PAGE: MYRECIPES
+*******************************************/
 .trix-content {
   background-color: white;
   width: 65%;
 }
-
-
-
 
 .formfield * {
     vertical-align: top;

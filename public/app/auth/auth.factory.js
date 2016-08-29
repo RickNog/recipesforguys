@@ -60,7 +60,7 @@
 
                             //Stores access token and username on successful login
                             localStorageService.set('access_token', response.data.access_token);
-                            localStorageService.set('username', loginEmail);
+                            localStorageService.set('email', loginEmail);
 
                             defer.resolve(response);
                         } else {

@@ -171,4 +171,30 @@
             //     }
 
         }
+
+
+        //Uses POST HTTP call to send searchQuery to database and returns recipes posted by a particular email
+        function searchRecipesByUser(searchQuery) {
+            var defer = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: url + 'search/email',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                data: searchQuery
+            }).then(function(response) {
+                    if (typeof response.data === 'object') {
+                        defer.resolve(response);
+                    } else {
+                        defer.reject("No data found!");
+                    }
+                },
+                function(error) {
+                    defer.reject(error);
+                });
+
+            return defer.promise;
+        }
 })();

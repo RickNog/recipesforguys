@@ -15,7 +15,9 @@
         vm.deleteRecipe = deleteRecipe;
         vm.editRecipe = editRecipe;
         vm.searchRecipe = searchRecipe;
-        vm.loginEmail = localStorageService.get("loginEmail");
+        vm.loginEmail = localStorageService.get("email");
+
+
 
         vm.searchCategory = $stateParams.category
 
@@ -23,12 +25,16 @@
         activate();
         ////////////////
         function activate() {
+            //Searches properties by users if user is logged in
+            if (vm.loginEmail) {
+                searchPropertiesByUser(vm.loginEmail);
+            }
 
             searchRecipe(vm.searchCategory);
 
-            //searchRecipe({category: 'Chicken'});
+            
            
-    }
+        }
 
     //Creating function to call RecipesFactory's getRecipes method to get and store all recipies
         function getRecipe() {
@@ -50,10 +56,13 @@
         }
 
         //Creating function to call RecipesFactory's addRecipes method to add property
-        function addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy) {
 
-            RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
+        function addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy) {
+                if (category && category !== "") {
+
+                    RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
                 .then(function(response) {
+
 
                         response;
                         //vm.recipe.push(.data);
@@ -68,6 +77,11 @@
                             toastr.info(error);
                         }
                     })
+                }
+                else {
+                    toastr.error('Please select a category.')
+                }
+            
         }
 
         //Creating function to call RecipesFactory's delete property method to delete recipies
@@ -120,7 +134,30 @@
                 .then(function(response) {
 
                         vm.searchResults = (response.data);
-                        toastr.success('Recipe Loaded!');
+                        // toastr.success('Recipe Loaded!');
+
+
+                    },
+                    function(error) {
+                        if (typeof error === 'object') {
+                            toastr.error('There was an error: ' + error.data);
+                        } else {
+                            toastr.info(error);
+                        }
+                    })
+        }
+
+
+        //Creating function to call RecipeFactory's searchRecipesByUser method to return recipes posted by current user
+        function searchRecipesByUser(email) {
+
+            var searchQuery = { email: email };
+
+            PropertyFactory.searchPropertiesByUser(searchQuery)
+                .then(function(response) {
+
+                        vm.properties = (response.data);
+                        toastr.success('Properties Loaded!');
 
 
                     },

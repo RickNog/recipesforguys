@@ -14,7 +14,7 @@
         vm.registerUser = registerUser;
         vm.loginUser = loginUser;
         vm.logoutUser = logoutUser;
-        vm.loginEmail = localStorageService.get("loginEmail");
+        vm.loginEmail = localStorageService.get("email");
 
         //Checks to see if there is a stored username, if yes sets login status to true
         if (vm.loginEmail) {
@@ -30,7 +30,7 @@
         	AuthFactory.registerUser(firstName, lastName, email, password, confirmPassword)
         	.then(function(response){
 
-                toastr.success('User successfully registered!');
+                toastr.success('Thank you for registering! Please log in.');
 
         		vm.newFirstName = '';
                 vm.newLastName = '';
@@ -38,7 +38,7 @@
         		vm.newPassword = '';
                 vm.newConfirmPassword = '';
 
-                $state.go("myrecipes");
+                $state.go("home");
             },
             function(error) {
                     if (typeof error === 'object') {
