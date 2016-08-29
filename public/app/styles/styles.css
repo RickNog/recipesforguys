@@ -79,9 +79,8 @@
 #myCarousel .item {height: 400px;}
 
 /*Carousel pics*/
-#home-pics {
+#carousel-pics {
     border-radius: 25px;
-    background: url(paper.gif);
     background-position: left top;
     background-repeat: repeat;
     padding: 20px; 
@@ -121,6 +120,20 @@ margin: auto;
 }
 
 /*******************************************
+PAGE: ABOUT
+*******************************************/
+#about-text {
+  font-weight: bold;
+  font-size: 1.125em;
+  
+}
+#about-greeting{
+  text-align: center;
+  color: blue;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+/*******************************************
 PAGE: TOOLS
 *******************************************/
 #wrapper {
@@ -141,10 +154,69 @@ PAGE: TOOLS
   margin: 2.5%;
 }
 
+#tools-text {
+  font-weight: bold;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+
+/*******************************************
+PAGE: ESSENTIALS
+*******************************************/
+
+
+#seasonings {
+  font-size: 1.3em;
+  width: 35%;
+}
+
+
+#sauces {
+  font-size: 1.3em;
+  width: 35%;
+}
+
+
+#oils {
+  font-size: 1.3em;
+  width: 35%;
+}
+
+#other {
+  font-size: 1.3em;
+  width: 35%;
+}
+
+/*******************************************
+PAGE: INDEX
+*******************************************/
+.logout-button{
+  background-color: #77ce5a;
+  font-size: 18px;
+  margin: 8px 10px 6px 10px;
+  border-radius: 25px;
+}
+
+.glyphicon{
+  font-size: 23px;
+}
+
+.trix-content {
+  background-color: white;
+  width: 65%;
+}
+
+
+
+
 .formfield * {
     vertical-align: top;
 }
 
-.trix-content {
-  
-}
+
+
+
+
+
+
