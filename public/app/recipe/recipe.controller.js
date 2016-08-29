@@ -26,9 +26,9 @@
         ////////////////
         function activate() {
             //Searches properties by users if user is logged in
-            if (vm.loginEmail) {
-                searchPropertiesByUser(vm.loginEmail);
-            }
+            // if (vm.loginEmail) {
+            //     searchPropertiesByUser(vm.loginEmail);
+            // }
 
             searchRecipe(vm.searchCategory);
 
@@ -133,7 +133,7 @@
             RecipeFactory.searchRecipe(searchQuery)
                 .then(function(response) {
 
-                        vm.searchResults = (response.data);
+                        vm.searchResults = (response);
                         // toastr.success('Recipe Loaded!');
 
 
@@ -149,25 +149,25 @@
 
 
         //Creating function to call RecipeFactory's searchRecipesByUser method to return recipes posted by current user
-        function searchRecipesByUser(email) {
+        // function searchRecipesByUser(email) {
 
-            var searchQuery = { email: email };
+        //     var searchQuery = { email: email };
 
-            PropertyFactory.searchPropertiesByUser(searchQuery)
-                .then(function(response) {
+        //     PropertyFactory.searchPropertiesByUser(searchQuery)
+        //         .then(function(response) {
 
-                        vm.properties = (response.data);
-                        toastr.success('Properties Loaded!');
+        //                 vm.properties = (response.data);
+        //                 toastr.success('Properties Loaded!');
 
 
-                    },
-                    function(error) {
-                        if (typeof error === 'object') {
-                            toastr.error('There was an error: ' + error.data);
-                        } else {
-                            toastr.info(error);
-                        }
-                    })
-        }
+        //             },
+        //             function(error) {
+        //                 if (typeof error === 'object') {
+        //                     toastr.error('There was an error: ' + error.data);
+        //                 } else {
+        //                     toastr.info(error);
+        //                 }
+        //             })
+        // }
     }
 })();

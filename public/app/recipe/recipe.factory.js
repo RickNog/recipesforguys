@@ -139,9 +139,18 @@
 
                 }).then(function(response) {
                         if (typeof response.data === 'object') {
-                            //var parsedResponse = parseRecipeDetail(response);
 
-                            defer.resolve(response);
+                            var parsedResponse = [];
+
+                            if(response.data) {
+                                angular.forEach(response.data, function(value, key) {
+
+                                    parsedResponse.push(parseRecipeDetail(value));
+
+                                })
+                            }
+
+                            defer.resolve(parsedResponse);
                         } else {
                             defer.reject("No data found!");
                         }
@@ -154,21 +163,13 @@
             }
 
 
-            // function parseRecipeDetail(data) {
+            function parseRecipeDetail(data) {
+                    
+                    data.recipeDetails = $sce.trustAsHtml(data.recipeDetails);
+    
+                return data;
 
-            //     var parseData[];
-            //     angular.forEach((values, function(value, key) {
-            //             var parsedDetails = '';
-            //             if (value == 'recipeDetails') {
-            //                 value[key] = $sce.trustAsHtml(value[key]);
-            //             }
-            //             parseData.push(values);
-            //             }
-            //         ));
-
-            //         return parseData;
-
-            //     }
+                }
 
         }
 

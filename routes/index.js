@@ -80,6 +80,10 @@ router.get('/recipes/search', function(req, res) {
     if (req.query.category) {
         query.category = req.query.category;
     }
+
+    // if (req.query.category) {
+    //     query.category = req.query.category;
+    // }
     Recipe.find(query, function(err, recipes) {
         if (err)
             res.status(500).send(err);
@@ -122,7 +126,7 @@ router.use('/recipes/:recipeId', function(req, res, next) {
 router.get('/recipes/:recipeId', function(req, res) {
 
     res.json(req.recipe);
-})
+});
 
 
 // Edit recipe
@@ -178,6 +182,8 @@ router.delete('/recipes/:recipeId', function(req, res){
     }
   });
 });
+
+
 
 
 module.exports = router;

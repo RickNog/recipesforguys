@@ -5,10 +5,9 @@
     <div class="col-md-3" ng-repeat="data in vm.searchResults">
         <div class="panel panel-default searchResult">
             <div class="panel-body">
-            	<!-- <img class="recipePic" ng-src="../img/{{data.RecipeId}}.jpg"> -->
                 <p>Category: {{data.category}}</p>
                 <p>Recipe name: {{data.recipeName}}</p>
-                <p>Instructions: {{data.recipeDetails}}</p> 
+                <p>Instructions: <span ng-bind-html="data.recipeDetails"></span> </p> 
                 <p>Time prep: {{data.timePrep}}</p>
                 <p>Time cook: {{data.timeCook}}</p>
                 <p>Servings: {{data.servings}}</p>
@@ -17,6 +16,8 @@
                 <p>Protein: {{data.protein}}</p>
                 <p>Carbs: {{data.carbs}} </p>
                 <p>Fiber: {{data.fiber}}</p>
+                <p>Created by: {{data.createdBy}}</p>
+                <!-- <p>Created date: {{data.createdDate}}</p> -->
                               
             </div>
         </div>
