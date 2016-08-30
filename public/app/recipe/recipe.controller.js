@@ -15,9 +15,8 @@
         vm.deleteRecipe = deleteRecipe;
         vm.editRecipe = editRecipe;
         vm.searchRecipe = searchRecipe;
+        vm.searchRecipeByUser = searchRecipeByUser;
         vm.loginEmail = localStorageService.get("email");
-
-
 
         vm.searchCategory = $stateParams.category
 
@@ -25,15 +24,9 @@
         activate();
         ////////////////
         function activate() {
-            //Searches properties by users if user is logged in
-            // if (vm.loginEmail) {
-            //     searchPropertiesByUser(vm.loginEmail);
-            // }
 
             searchRecipe(vm.searchCategory);
 
-            
-           
         }
 
     //Creating function to call RecipesFactory's getRecipes method to get and store all recipies
@@ -42,7 +35,7 @@
             RecipeFactory.getRecipe()
                 .then(function(response) {
 
-                        vm.searchResults = response.data;
+                        vm.recipe = response.data;
                         //toastr.success("Success");
 
                     },
@@ -55,19 +48,15 @@
                     })
         }
 
-        //Creating function to call RecipesFactory's addRecipes method to add property
-
+        //Creating function to call RecipesFactory's addRecipes method to add recipes
         function addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy) {
                 if (category && category !== "") {
 
                     RecipeFactory.addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy)
                 .then(function(response) {
 
-
                         response;
-                        //vm.recipe.push(.data);
                         toastr.success('Recipe Loaded!');
-
 
                     },
                     function(error) {
@@ -92,7 +81,6 @@
                     vm.recipeDel = response.data;
                     toastr.success('Recipe Successfully Deleted!');
 
-
                 },
                 function(error) {
                     if (typeof error === 'object') {
@@ -113,7 +101,6 @@
                 .then(function(response) {
 
                         toastr.success('Recipe Updated!');
-
 
                     },
                     function(error) {
@@ -136,6 +123,27 @@
                         vm.searchResults = (response);
                         // toastr.success('Recipe Loaded!');
 
+                    },
+                    function(error) {
+                        if (typeof error === 'object') {
+                            toastr.error('There was an error: ' + error.data);
+                        } else {
+                            toastr.info(error);
+                        }
+                    })
+        }
+
+        //Creating function to call RecipeFactory's searchRecipeByUser method to return recipes posted by current user
+        function searchRecipeByUser(email) {
+
+            var searchQuery = { email: email };
+
+            RecipeFactory.searchRecipesByUser(searchQuery)
+                .then(function(response) {
+
+                        vm.properties = (response.data);
+                        toastr.success('Properties Loaded!');
+
 
                     },
                     function(error) {
@@ -148,26 +156,5 @@
         }
 
 
-        //Creating function to call RecipeFactory's searchRecipesByUser method to return recipes posted by current user
-        // function searchRecipesByUser(email) {
-
-        //     var searchQuery = { email: email };
-
-        //     PropertyFactory.searchPropertiesByUser(searchQuery)
-        //         .then(function(response) {
-
-        //                 vm.properties = (response.data);
-        //                 toastr.success('Properties Loaded!');
-
-
-        //             },
-        //             function(error) {
-        //                 if (typeof error === 'object') {
-        //                     toastr.error('There was an error: ' + error.data);
-        //                 } else {
-        //                     toastr.info(error);
-        //                 }
-        //             })
-        // }
     }
 })();

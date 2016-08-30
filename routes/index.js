@@ -81,9 +81,7 @@ router.get('/recipes/search', function(req, res) {
         query.category = req.query.category;
     }
 
-    // if (req.query.category) {
-    //     query.category = req.query.category;
-    // }
+
     Recipe.find(query, function(err, recipes) {
         if (err)
             res.status(500).send(err);

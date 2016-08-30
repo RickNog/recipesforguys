@@ -8,14 +8,14 @@
         /* @ngInject */
         function RecipeFactory($http, $q, localStorageService, apiUrl, $sce) {
 
-
             var service = {
                 getRecipe: getRecipe,
                 addRecipe: addRecipe,
                 deleteRecipe: deleteRecipe,
                 editRecipe: editRecipe,
-                searchRecipe: searchRecipe
-                //parseRecipeDetail: parseRecipeDetail
+                searchRecipe: searchRecipe,
+                searchRecipeByUser: searchRecipeByUser
+                
             };
             return service;
             ////////////////
@@ -49,8 +49,8 @@
             function addRecipe(category, recipeName, recipeDetails, timePrep, timeCook, servings, calories, fat, protein, carbs, fiber, createdDate, createdBy) {
 
                 var defer = $q.defer();
-
-                var newRecipe = { category: category, recipeName: recipeName, recipeDetails: recipeDetails, timePrep: timePrep, timeCook: timeCook, servings: servings, calories: calories, fat: fat, protein: protein, carbs: carbs, fiber: fiber, createdDate: createdDate, createdBy: createdBy };
+                var userEmail = localStorageService.get('email');
+                var newRecipe = { category: category, recipeName: recipeName, recipeDetails: recipeDetails, timePrep: timePrep, timeCook: timeCook, servings: servings, calories: calories, fat: fat, protein: protein, carbs: carbs, fiber: fiber, createdDate: createdDate, createdBy: userEmail };
 
                 $http({
                     method: 'POST',
@@ -172,15 +172,13 @@
                 }
 
         }
-
-
-        //Uses POST HTTP call to send searchQuery to database and returns recipes posted by a particular email
-        function searchRecipesByUser(searchQuery) {
+        //Uses POST HTTP call to send searchQuery to database and returns only recipes posted by a particular username
+        function searchRecipeByUser(searchQuery) {
             var defer = $q.defer();
 
             $http({
-                method: 'GET',
-                url: url + 'search/email',
+                method: 'POST',
+                url: url + 'search/username',
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 },
@@ -198,4 +196,7 @@
 
             return defer.promise;
         }
-})();
+    })();
+
+
+
