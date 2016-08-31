@@ -39,7 +39,7 @@ router.post('/register', function(req, res, next) {
 
         // use schema's `create` method to insert document into Mongo
         User.create(userData, function(error, user) {
-            console.log(user);
+
             if (error) {
                 return next(error);
             } else {
@@ -80,6 +80,11 @@ router.get('/recipes/search', function(req, res) {
     if (req.query.category) {
         query.category = req.query.category;
     }
+
+    if (req.query.createdBy) {
+        query.createdBy = req.query.createdBy;
+    }
+
 
 
     Recipe.find(query, function(err, recipes) {

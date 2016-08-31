@@ -3,32 +3,18 @@
         <label for="comment">Paste or type recipe here:</label>
         <br/>
         <trix-editor angular-trix ng-model="vm.recipeDetails" class="trix-content"></trix-editor>
-        <!-- <textarea rows="10" cols="70" id="comment" ng-model="vm.recipeDetails"></textarea> -->
     </div>
 </div>
 <br/>
-<div class="container">
+<!-- <div class="container">
     <div class="col-xs-4">
         <div class="form-group">
             <label class="control-label">Upload pics here:</label>
             <input type="file" class="filestyle" data-buttonText="Select a File">
         </div>
     </div>
-    <!-- <fieldset class="form-group">
-        <div class="radio">
-            <b>Want the other guys to view your recipe?</b>
-            <br>
-            <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Yeah sure!
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Nah, maybe later.
-            </label>
-        </div>
-    </fieldset> -->
-</div>
+    
+</div> -->
 <br/>
 <form role="form">
     <div class="row">
@@ -37,7 +23,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Recipe Name</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.recipeName" placeholder="Recommend">
+                        <input type="" class="form-control" ng-model="vm.recipeName">
                     </div>
                 </div>
             </div>
@@ -45,7 +31,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Calories</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.calories" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.calories">
                     </div>
                 </div>
             </div>
@@ -53,7 +39,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Protein</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.protein" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.protein">
                     </div>
                 </div>
             </div>
@@ -65,7 +51,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Time prep</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.timePrep" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.timePrep">
                     </div>
                 </div>
             </div>
@@ -73,7 +59,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Carbs</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.carbs" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.carbs">
                     </div>
                 </div>
             </div>
@@ -81,7 +67,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Fiber</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.fiber" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.fiber">
                     </div>
                 </div>
             </div>
@@ -93,7 +79,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Time cook</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.timeCook" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.timeCook">
                     </div>
                 </div>
             </div>
@@ -101,39 +87,39 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">Fat</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.fat" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.fat">
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Date</label>
+                    <label class="control-label col-sm-3">Servings</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.createdDate" placeholder="Optional">
+                        <input type="" class="form-control" ng-model="vm.servings">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label col-sm-3">Servings</label>
                     <div class="col-md-8">
-                        <input type="" class="form-control" ng-model="vm.servings" placeholder="Recommend">
+                        <input type="" class="form-control" ng-model="vm.servings">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </form>
 <br>
 <div class="container">
     <form action="#" method="post">
         <div class="row">
             <div class="col-md-6">
-                <!-- <div class="prioritySelectInput"> -->
+                
                 <div class="form-group">
                     <label for="prioritySelect">Select catagory (required):</label>
                     <select class="form-control" required ng-model="vm.category">
@@ -151,7 +137,7 @@
                         <option>Plates for dates (breakfast)</option>
                     </select>
                 </div>
-                <!-- </div> -->
+                
             </div>
         </div>
     </form>
@@ -161,10 +147,13 @@
     <submit class="btn btn-primary" ng-click="vm.addRecipe(vm.category, vm.recipeName, vm.recipeDetails, vm.timePrep, vm.timeCook, vm.servings, vm.calories, vm.fat, vm.protein, vm.carbs, vm.fiber)">Add Recipe</submit>
 </div>
 <br>
+
+
+
 <!-- Main dashboard body for displaying user's added recipes -->
 <div class="container">
     <div class="col-sm-10 text-left">
-        <div class="container-fluid col-sm-4" ng-repeat="data in vm.recipe">
+        <div class="container-fluid col-sm-4" ng-repeat="data in vm.myRecipes">
             <div class="row">
                 <div class="panel panel-default NewPanel searchResult">
                     <div class="panel-body recipeDisplay">
@@ -193,7 +182,7 @@
                         <label>Fiber: {{data.fiber}}</label></br>
                         <br>
                         <label>Created by: {{data.createdBy}}</label></br>
-                        <button class="btn btn-danger" ng-click="vm.deleteRecipe(data)">delete property</button>
+                        <button class="btn btn-danger" ng-click="vm.deleteRecipe(data)">delete recipe</button>
                     </div>
                 </div>
             </div>

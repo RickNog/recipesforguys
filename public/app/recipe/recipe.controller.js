@@ -15,7 +15,7 @@
         vm.deleteRecipe = deleteRecipe;
         vm.editRecipe = editRecipe;
         vm.searchRecipe = searchRecipe;
-        vm.searchRecipeByUser = searchRecipeByUser;
+        vm.searchRecipeByEmail = searchRecipeByEmail;
         vm.loginEmail = localStorageService.get("email");
 
         vm.searchCategory = $stateParams.category
@@ -24,6 +24,11 @@
         activate();
         ////////////////
         function activate() {
+
+            //Searches recipes by users if user is logged in
+            if (vm.loginEmail) {
+                searchRecipeByEmail();
+            }
 
             searchRecipe(vm.searchCategory);
 
@@ -75,10 +80,10 @@
 
         //Creating function to call RecipesFactory's delete property method to delete recipies
         function deleteRecipe(data) {
-            var index = vm.recipe.indexOf(data);
-            RecipeFactory.deleteRecipe(data.RecipeId).then(function(response) {
+            var index = vm.myRecipes.indexOf(data);
+            RecipeFactory.deleteRecipe(data._id).then(function(response) {
 
-                    vm.recipeDel = response.data;
+                    vm.recipeDel = (response.data);
                     toastr.success('Recipe Successfully Deleted!');
 
                 },
@@ -90,7 +95,7 @@
                     }
                 });
 
-            return vm.recipe.splice(index, 1);
+            return vm.myRecipes.splice(index, 1);
 
         }
 
@@ -112,7 +117,7 @@
                     })
         }
 
-        // Function to call searchrecipe method to advanced search
+        // Function to call searchrecipe for method to search category
         function searchRecipe(category) {
 
             var searchQuery = { category: category };
@@ -133,17 +138,16 @@
                     })
         }
 
-        //Creating function to call RecipeFactory's searchRecipeByUser method to return recipes posted by current user
-        function searchRecipeByUser(email) {
+        // Function to call searchrecipe for method to search createdBy
+        function searchRecipeByEmail() {
 
-            var searchQuery = { email: email };
+            var searchQuery = { createdBy: vm.loginEmail };
 
-            RecipeFactory.searchRecipesByUser(searchQuery)
+            RecipeFactory.searchRecipeByEmail(searchQuery)
                 .then(function(response) {
 
-                        vm.properties = (response.data);
-                        toastr.success('Properties Loaded!');
-
+                        vm.myRecipes = (response);
+                        // toastr.success('Recipe Loaded!');
 
                     },
                     function(error) {

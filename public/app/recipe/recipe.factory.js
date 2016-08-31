@@ -14,7 +14,8 @@
                 deleteRecipe: deleteRecipe,
                 editRecipe: editRecipe,
                 searchRecipe: searchRecipe,
-                searchRecipeByUser: searchRecipeByUser
+                searchRecipeByEmail: searchRecipeByEmail
+                // searchRecipeByUser: searchRecipeByUser
                 
             };
             return service;
@@ -81,12 +82,12 @@
 
                 $http({
                     method: 'DELETE',
-                    url: apiUrl + recipeId,
+                    url: apiUrl + 'recipes/' + recipeId,
                 }).then(function(response) {
                         if (typeof response.data === 'object') {
                             defer.resolve(response);
                         } else {
-                            defer.reject("No data found!");
+                            defer.reject("Recipe deleted!");
                         }
                     },
                     function(error) {
@@ -171,31 +172,56 @@
 
                 }
 
-        }
-        //Uses POST HTTP call to send searchQuery to database and returns only recipes posted by a particular username
-        function searchRecipeByUser(searchQuery) {
-            var defer = $q.defer();
+                //Uses GET HTTP call to send searchQuery object to database and returns results 
+            //of advanced search
+            function searchRecipeByEmail(searchQuery) {
+                var defer = $q.defer();
 
-            $http({
-                method: 'POST',
-                url: url + 'search/username',
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                data: searchQuery
-            }).then(function(response) {
-                    if (typeof response.data === 'object') {
-                        defer.resolve(response);
-                    } else {
-                        defer.reject("No data found!");
+                $http({
+                    method: 'GET',
+                    url: apiUrl + 'recipes/search?createdBy=' + searchQuery.createdBy,
+                    // data: category,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
                     }
-                },
-                function(error) {
-                    defer.reject(error);
-                });
 
-            return defer.promise;
+                }).then(function(response) {
+                        if (typeof response.data === 'object') {
+
+                            var parsedResponse = [];
+
+                            if(response.data) {
+                                angular.forEach(response.data, function(value, key) {
+
+                                    parsedResponse.push(parseRecipeDetail(value));
+
+                                })
+                            }
+
+                            defer.resolve(parsedResponse);
+                        } else {
+                            defer.reject("No data found!");
+                        }
+                    },
+                    function(error) {
+                        defer.reject(error);
+                    });
+
+                return defer.promise;
+            }
+
+            function parseRecipeDetail(data) {
+                    
+                    data.recipeDetails = $sce.trustAsHtml(data.recipeDetails);
+    
+                return data;
+
+                }
+
         }
+
+        
+
     })();
 
 
