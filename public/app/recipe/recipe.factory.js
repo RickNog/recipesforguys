@@ -15,7 +15,6 @@
                 editRecipe: editRecipe,
                 searchRecipe: searchRecipe,
                 searchRecipeByEmail: searchRecipeByEmail
-                // searchRecipeByUser: searchRecipeByUser
                 
             };
             return service;

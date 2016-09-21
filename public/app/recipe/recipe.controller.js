@@ -41,7 +41,7 @@
                 .then(function(response) {
 
                         vm.recipe = response.data;
-                        //toastr.success("Success");
+                        toastr.success("Success");
 
                     },
                     function(error) {
@@ -61,7 +61,7 @@
                 .then(function(response) {
 
                         response;
-                        toastr.success('Recipe Loaded!');
+                        toastr.success('Recipe Successfully Added!');
 
                     },
                     function(error) {
@@ -126,7 +126,7 @@
                 .then(function(response) {
 
                         vm.searchResults = (response);
-                        // toastr.success('Recipe Loaded!');
+                        toastr.success('Search Completed Successfully!');
 
                     },
                     function(error) {
@@ -147,7 +147,7 @@
                 .then(function(response) {
 
                         vm.myRecipes = (response);
-                        // toastr.success('Recipe Loaded!');
+                        toastr.success('Recipe Loaded!');
 
                     },
                     function(error) {

@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+
+var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var config = require('../config'); // get our config file
 var Recipe = require('../app/models/recipe'); //
 var User = require('../app/models/user'); // get our mongoose model
 var mongoose = require('mongoose');
-
-//var Register   = require('../app/models/user'); // get our mongoose model
 
 
 
@@ -12,8 +13,6 @@ var mongoose = require('mongoose');
 // ***************************
 // Register router
 // ***************************
-
-// route to register a user
 router.post('/register', function(req, res, next) {
 
     if (req.body.firstName &&
@@ -58,6 +57,7 @@ router.post('/register', function(req, res, next) {
 });
 
 
+
 // ***************************
 // Recipe routers
 // ***************************
@@ -95,7 +95,6 @@ router.get('/recipes/search', function(req, res) {
     });
 });
 
-
 // POST recipe
 router.post('/recipes', function(req, res) {
 
@@ -125,56 +124,6 @@ router.use('/recipes/:recipeId', function(req, res, next) {
     });
 });
 
-// GET recipe by ID
-router.get('/recipes/:recipeId', function(req, res) {
-
-    res.json(req.recipe);
-});
-
-
-// Edit recipe
-router.put('/recipes/:recipeId', function(req, res) {
-
-    req.recipe.category = req.body.category;
-    req.recipe.recipeName = req.body.recipeName;
-    req.recipe.recipeDetails = req.body.recipeDetails;
-    req.recipe.timePrep = req.body.timePrep;
-    req.recipe.timeCook = req.body.timeCook;
-    req.recipe.servings = req.body.servings;
-    req.recipe.calories = req.body.calories;
-    req.recipe.fat = req.body.fat;
-    req.recipe.protein = req.body.protein;
-    req.recipe.carbs = req.body.carbs;
-    req.recipe.fiber = req.body.fiber;
-    req.recipe.createdDate = req.body.createdDate;
-    req.recipe.createdBy = req.body.createdBy;
-    req.recipe.save(function(err) {
-        if (err)
-            res.status(500).send(err);
-        else
-            req.res.json(req.recipe);
-    });
-});
-
-
-// router.patch('/recipes/:recipeId', function(req, res) {
-//     if (req.body._id)
-//         delete req.body._id;
-
-//     for (var p in req.body) {
-//         req.recipe[p] = req.body[p];
-//     }
-
-//     req.recipe.save(function(err) {
-//         if (err)
-//             res.status(500).send(err);
-//         else
-//             res.json(req.recipe);
-
-//     });
-// });
-
-
 // Delete recipe
 router.delete('/recipes/:recipeId', function(req, res){
   req.recipe.remove(function(err){
@@ -185,8 +134,6 @@ router.delete('/recipes/:recipeId', function(req, res){
     }
   });
 });
-
-
 
 
 module.exports = router;

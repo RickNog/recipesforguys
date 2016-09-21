@@ -6,7 +6,6 @@
 
     app.config(function(localStorageServiceProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
 
-        // $httpProvider.interceptors.push('AuthInterceptor');
 
         $urlRouterProvider.otherwise('/home');
 
